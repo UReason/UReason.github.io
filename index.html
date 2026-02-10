@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="UReason: Benchmarking the Reasoning Paradox in Unified Multimodal Models.">
+  <meta name="keywords" content="Unified Multimodal Models, Chain-of-Thought, Image Generation, Reasoning Paradox">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UReason: Benchmarking the Reasoning Paradox in Unified Multimodal Models</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans:wght@300;400;500;600;700&family=Castoro&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://unpkg.com/tabulator-tables@5.5.2/dist/css/tabulator_bootstrap4.min.css" rel="stylesheet">
+  <script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.5.2/dist/js/tabulator.min.js"></script>
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+
+  <link href="https://unpkg.com/tabulator-tables@5.5.2/dist/css/tabulator_bootstrap4.min.css" rel="stylesheet">
+  <script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.5.2/dist/js/tabulator.min.js"></script>
+
+  <script src="./static/js/benmark_table.js" type="module"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+
+</head>
+
+<body>
+
+  <!-- ===== HERO HEADER ===== -->
+  <section class="hero hero-header-section">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title animate-in">
+              <span class="highlight-text">UReason: Benchmarking the Reasoning Paradox in Unified
+                Multimodal Models</span>
+            </h1>
+            <div class="is-size-5 publication-authors animate-in animate-delay-1">
+              <span>
+                <a href="https://chengyang.notion.site/aboutme">Cheng Yang</a><sup>1*</sup>,</span>
+              <span>
+                <a href="./">Chufan Shi</a><sup>2*</sup>,</span>
+              <span>
+                <a href="https://www.boshui.site/">Bo Shui</a><sup>3</sup>,</span>
+              <span>
+                <a href="./">Yaokang Wu</a><sup>4</sup>,</span>
+              <span>
+                <a href="https://muzi-tao.github.io/">Muzi Tao</a><sup>2</sup>,</span>
+              <span>
+                <a href="https://sites.google.com/usc.edu/huijuanwang">Huijuan Wang</a><sup>2</sup>,</span>
+              <br>
+              <span>
+                <a href="https://ivnle.github.io/">Ivan Yee Lee</a><sup>1</sup>,</span>
+              <span>
+                <a href="https://yongliu20.github.io/">Yong Liu</a><sup>2</sup>,</span>
+              <span>
+                <a href="https://xuezhemax.github.io/">Xuezhe Ma</a><sup>2</sup>,</span>
+              <span>
+                <a href="https://cseweb.ucsd.edu/~tberg/">Taylor Berg-Kirkpatrick</a><sup>1</sup>
+            </div>
+
+            <div class="is-size-5 publication-authors animate-in animate-delay-2" style="margin-top: 1rem;">
+              <span><sup>1</sup>University of California San Diego</span>&nbsp;&nbsp;
+              <span><sup>2</sup>University of Southern California</span>
+              <br>
+              <span><sup>3</sup>University of Illinois Urbana-Champaign</span>&nbsp;&nbsp;
+              <span><sup>4</sup>Carnegie Mellon University</span>
+            </div>
+
+            <div class="is-size-6 publication-authors animate-in animate-delay-2" style="margin-top: 0.5rem;">
+              <span>*Equal contribution.</span>
+            </div>
+
+            <div class="column has-text-centered animate-in animate-delay-3" style="margin-top: 1rem;">
+              <div class="publication-links">
+                <span class="link-block">
+                  <a href="./" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="./" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="./" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Github (Coming soon)</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABSTRACT ===== -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content-card" style="margin-top: 1.5rem;">
+            <div class="content has-text-justified">
+              <p>
+                To elicit capabilities for addressing complex and implicit visual requirements, recent <b>unified
+                  multimodal models (UMMs)</b> increasingly adopt <b>chain-of-thought reasoning</b> to guide image
+                generation. However, the
+                actual effect of reasoning on visual synthesis remains unclear.
+              </p>
+              <p>
+                We present <b>UReason</b>, a diagnostic benchmark for <b>reasoning-driven image generation</b> that
+                evaluates whether reasoning can be faithfully executed in pixels. UReason contains
+                <b>2,000</b> instances across five task families: <span class="sc">Code</span>, <span
+                  class="sc">Arithmetic</span>,
+                <span class="sc">Spatial</span>, <span class="sc">Attribute</span>, and <span class="sc">Text</span>
+                reasoning. To isolate the role of reasoning traces, we
+                introduce an evaluation framework comparing <b>direct generation, reasoning-guided generation, and
+                  de-contextualized generation</b> which conditions only on the refined prompt.
+              </p>
+              <p>
+                Across eight open-source unified models, we observe a consistent <b>Reasoning Paradox</b>: Reasoning
+                traces generally improve performance over direct generation, yet retaining intermediate thoughts
+                as conditioning context often hinders visual synthesis, and conditioning
+                only on the refined prompt yields substantial gains.
+              </p>
+              <p>
+                Our analysis suggests that the bottleneck lies in <b>contextual interference</b> rather than
+                insufficient
+                reasoning capacity. UReason provides a principled testbed for studying
+                reasoning in unified models and motivates future methods that effectively
+                integrate reasoning for visual generation while mitigating interference.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BENCHMARK ===== -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">The UReason Benchmark</h2>
+          <div class="content-card" style="margin-top: 1.5rem;">
+            <div class="content has-text-justified">
+              <p>
+                UReason is designed to evaluate the visual executability of reasoning chains. Unlike standard benchmarks
+                that focus primarily on aesthetic quality or direct description, UReason challenges models to perform
+                multi-step deduction to determine the correct visual target. The benchmark consists of <b>2,000 manually
+                  annotated instances</b> spanning five diagnostic tasks:
+              </p>
+              <ul>
+                <li><b>Code Reasoning:</b> Interpreting and executing code (e.g., HTML, Python) to render visual
+                  outputs.
+                </li>
+                <li><b>Arithmetic Reasoning:</b> Tracking object quantities through mathematical reasoning.</li>
+                <li><b>Spatial Reasoning:</b> Inferring complex layouts from implicit spatial cues and logical
+                  constraints.</li>
+                <li><b>Attribute Reasoning:</b> Tracking state transitions to determine final object properties.</li>
+                <li><b>Text Reasoning:</b> Deriving text strings via logical rules rather than direct quotation.</li>
+              </ul>
+              <p>
+                Each instance is paired with a verifiable criterion (e.g., exact counts, specific spatial arrangements)
+                to enable objective performance measurement.
+              </p>
+            </div>
+          </div>
+          <div class="image-showcase">
+            <img src="./static/images/task_examples.png" alt="UReason Tasks." />
+            <p class="image-caption">
+              Fig 1. Representative UReason instances covering <span class="sc">Code</span>, <span
+                class="sc">Arithmetic</span>,
+              <span class="sc">Spatial</span>, <span class="sc">Attribute</span>, and <span class="sc">Text</span>
+              reasoning.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EVALUATION FRAMEWORK ===== -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Evaluation Framework</h2>
+          <div class="content-card" style="margin-top: 1.5rem;">
+            <div class="content has-text-justified">
+              <p>
+                To rigorously diagnose the impact of reasoning on image generation, we introduce the UReason Evaluation
+                Toolkit. This framework implements a controlled ablation protocol to isolate the effectiveness of
+                reasoning
+                from potential interference. We evaluate models across three distinct settings:
+              </p>
+              <ol>
+                <li>
+                  <b style="background-color: #d1eefc; color: #208bba; padding: 0 4px; font-weight: bold;">Direct
+                    Generation</b>: The baseline setting where the model generates images directly from the
+                  original prompt.
+                </li>
+                <li>
+                  <b style="background-color: #ffe8cc; color: #d97706; padding: 0 4px; font-weight: bold;">Reasoning-Guided
+                    Generation</b>: The model generates a Chain-of-Thought (CoT) reasoning trace first,
+                  and then generates the image conditioned on the full context (Prompt + Reasoning).
+                </li>
+                <li>
+                  <b style="background-color: #fce1ed; color: #d61f69; padding: 0 4px; font-weight: bold;">De-contextualized
+                    Generation</b>: The model performs reasoning to derive a refined prompt, but the
+                  intermediate thoughts are discarded. The image is generated conditioning <i>only</i> on the refined
+                  prompt.
+                </li>
+              </ol>
+              <p>
+                This comparative approach reveals the <b>Reasoning Paradox</b>: while reasoning is essential for
+                planning
+                (determining <i>what</i> to draw), the verbose traces often act as "contextual noise" that hinders the
+                visual generator's execution.
+              </p>
+            </div>
+          </div>
+          <div class="image-showcase">
+            <img src="./static/images/case_figure.png" alt="Evaluation Framework." />
+            <p class="image-caption">
+              Fig 2. Overview of the UReason evaluation framework comparing Direct, Reasoning-Guided, and
+              De-contextualized
+              settings.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MAIN RESULTS / LEADERBOARD ===== -->
+  <section class="hero teaser leaderboard-section">
+    <div class="container is-max-desktop" style="max-width: 1500px;">
+      <div class="hero-body has-text-centered">
+        <h2 class="title is-3">Main Results</h2>
+        <p class="mt-2 mb-4"
+          style="color: var(--text-secondary); font-size: 1.05rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+          We conduct examination of 8 UMMs on UReason across all 3 evaluation settings. The <b>UReason</b> leaderboard
+          showing Visual Verification Accuracy (%) and Performance Gain (Δ).
+        </p>
+
+        <div class="leaderboard-wrapper" style="margin-top: 1.5rem;">
+          <div id="ureason-main-table"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="section contact-section" id="Contact">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-four-fifths">
+          <div class="contact-card">
+            <h2 class="title is-4" style="margin-bottom: 1rem;">📬 Contact Us</h2>
+            <p>If you have any inquiries about UReason, feel free to reach out to us at ureason2026@gmail.com,
+              chy085@ucsd.edu, chufansh@usc.edu.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="content is-small has-text-centered">
+          This website templated is borrowed from <a href="https://github.com/nerfies/nerfies.github.io">nerfies</a> and
+          <a href="https://xwang.dev/mint-bench/">MINT</a>.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
