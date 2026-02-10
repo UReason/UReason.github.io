@@ -1,17 +1,6 @@
-# ChartMimic
+# UReason
 
-This is the repository that contains source code for the [ChartMimic website](https://chartmimic.github.io).
-
-If you find ChartMimic useful for your work please cite:
-
-```
-@article{yang2024chartmimic,
-        title={Chartmimic: Evaluating lmm's cross-modal reasoning capability via chart-to-code generation},
-        author={Yang, Cheng and Shi, Chufan and Liu, Yaxin and Shui, Bo and Wang, Junjie and Jing, Mohan and Xu, Linran and Zhu, Xinyu and Li, Siheng and Zhang, Yuxiang and others},
-        journal={arXiv preprint arXiv:2406.09961},
-        year={2024}
-}
-```
+This is the repository that contains source code for the [Ureason website](https://ureason.github.io).
 
 # Website License
 
