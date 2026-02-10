@@ -41,7 +41,10 @@ var settingFormatter = function (cell) {
         style = "background-color: #fce1ed; color: #d61f69;";
     }
 
-    return `<span style="${style} padding: 4px 8px; border-radius: 4px; font-weight: bold; font-size: 0.85em; display: inline-block; min-width: 80px;">${value}</span>`;
+    var length = String(value || "").length;
+    var fontSize = length > 12 ? "0.72em" : length > 10 ? "0.78em" : "0.85em";
+
+    return `<span style="${style} padding: 4px 8px; border-radius: 4px; font-weight: bold; font-size: ${fontSize}; display: inline-block; min-width: 80px; white-space: nowrap;">${value}</span>`;
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -111,7 +114,10 @@ document.addEventListener('DOMContentLoaded', function () {
                             var data = row.getData();
 
                             if (data.Setting === "Guided") {
-                                return `<span style="color:#2563eb; font-weight:bold; font-size: 1.1em;">${value}</span>`;
+                                var length = String(value || "").length;
+                                var fontSize = length > 20 ? "0.78em" : length > 16 ? "0.86em" : length > 12 ? "0.94em" : "1.02em";
+
+                                return `<span style="color:#1a80ea; font-weight:bold; font-size: ${fontSize}; white-space: nowrap;">${value}</span>`;
                             }
                             return "";
                         },
@@ -125,8 +131,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         field: "Setting",
                         hozAlign: "center",
                         vertAlign: "middle",
-                        widthGrow: 1.2,
-                        minWidth: 100,
+                        widthGrow: 1.5,
+                        minWidth: 120,
                         formatter: settingFormatter,
                         headerSort: false
                     },
