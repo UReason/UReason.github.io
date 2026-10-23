@@ -65,6 +65,34 @@ body {
   justify-content: center;
 }
 
+.hero-header-section .publication-venue {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  margin-bottom: 1.2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-header-section .publication-venue .venue-logo {
+  height: 40px;
+  width: auto;
+}
+
+.hero-header-section .publication-venue .venue-pill {
+  display: inline-block;
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  background: #d7263d;
+  color: #fff;
+  font-family: 'Google Sans', 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
 .hero-header-section .publication-kicker {
   display: inline-flex;
   align-items: center;
