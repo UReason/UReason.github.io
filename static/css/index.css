@@ -93,6 +93,11 @@ body {
   letter-spacing: 0.02em;
 }
 
+.hero-header-section .publication-venue .venue-award {
+  background: #f4c430;
+  color: #3a2a00;
+}
+
 .hero-header-section .publication-kicker {
   display: inline-flex;
   align-items: center;
